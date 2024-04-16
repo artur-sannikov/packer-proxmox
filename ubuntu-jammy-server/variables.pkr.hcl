@@ -23,9 +23,13 @@ variable "iso" {
     })
 }
 
+# SSH credentials for Packer
 variable "ssh_private_key_file" {
     type = string
     sensitive = true
+}
+variable "ssh_username" {
+    type = string
 }
 
 # Variables for setting up virual environment

@@ -77,7 +77,7 @@ source "proxmox-iso" "ubuntu-jammy-srv" {
     http_port_max = "${var.http.port_max}"
 
     # SSH access for Packer
-    ssh_username = "debian"
+    ssh_username = var.ssh_username
     ssh_private_key_file = "${var.ssh_private_key_file}"
 
     # Raise the timeout, when installation takes longer
