@@ -54,7 +54,7 @@ source "proxmox-iso" "ubuntu-jammy-srv" {
 
     # VM Cloud-Init Settings
     cloud_init = true
-    cloud_init_storage_pool = "${var.virtual_environment.cloud_init_storage_pool}"
+    cloud_init_storage_pool = "local-zfs"
 
     # PACKER Boot Commands
     boot_command = [

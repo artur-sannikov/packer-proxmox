@@ -34,7 +34,6 @@ variable "virtual_environment" {
         vm_id = number
         disk_storage_pool = string
         disk_size = string
-        cloud_init_storage_pool = string
     })
 }
 
