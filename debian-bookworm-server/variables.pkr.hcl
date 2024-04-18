@@ -21,16 +21,15 @@ variable "iso" {
 }
 
 # VM configuration
-variable "proxmox_node" {
-  type = string
+variable "vm" {
+  description = "Configuration options for VM"
+  type = object({
+    node = string
+    id   = number
+    disk_size = string
+  })
 }
-variable "proxmox_vm_id" {
-  type    = string
-  default = "100"
-}
-variable "proxmox_disk_size" {
-  type = string
-}
+
 variable "ssh_password" {
   type      = string
   sensitive = true

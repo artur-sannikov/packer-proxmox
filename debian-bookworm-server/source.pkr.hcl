@@ -9,8 +9,8 @@ source "proxmox-iso" "debian-bookworm-server" {
   insecure_skip_tls_verify = true
 
   # VM general settings
-  node                 = "${var.proxmox_node}"
-  vm_id                = "${var.proxmox_vm_id}"
+  node                 = "${var.vm.node}"
+  vm_id                = "${var.vm.id}"
   vm_name              = "debian-bookworm-srv"
   template_description = "Debian Bookworm Server Image"
 
@@ -25,7 +25,7 @@ source "proxmox-iso" "debian-bookworm-server" {
   # VM hard disk
   scsi_controller = "virtio-scsi-single"
   disks {
-    disk_size    = "${var.proxmox_disk_size}"
+    disk_size    = "${var.vm.disk_size}"
     discard      = true
     format       = "raw"
     storage_pool = "local-zfs"

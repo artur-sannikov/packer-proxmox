@@ -1,13 +1,15 @@
-proxmox_node  = 
-proxmox_vm_id =
+# Settings for VM
+vm = {
+  node =
+  id =
+  disk_size =
+}
 
 # Download ISO and verify checksum
 iso = {
   url      = "https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/debian-12.5.0-amd64-netinst.iso"
   checksum = "013f5b44670d81280b5b1bc02455842b250df2f0c6763398feb69af1a805a14f"
 }
-
-proxmox_disk_size = "20G"
 
 # HTTP server IP and ports for preseed.cfg
 http = {
