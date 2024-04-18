@@ -24,8 +24,8 @@ variable "iso" {
 variable "vm" {
   description = "Configuration options for VM"
   type = object({
-    node = string
-    id   = number
+    node      = string
+    id        = number
     disk_size = string
   })
 }
