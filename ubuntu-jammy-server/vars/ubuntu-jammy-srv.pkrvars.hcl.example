@@ -1,25 +1,22 @@
-proxmox_node =
-ssh_private_key_file =
-ssh_username =
+# Settings for VM
+vm = {
+    node =
+    id =
+    disk_size
+}
 
-# Variables for downloading ISO and checksum
+# Download ISO and verify checksum
 iso = {
     url = "https://releases.ubuntu.com/22.04.4/ubuntu-22.04.4-live-server-amd64.iso"
     checksum = "45f873de9f8cb637345d6e66a583762730bbea30277ef7b32c9c3bd6700a32b2"
 }
 
-# HTTP server IP and ports
+# HTTP server IP and ports for autoinstall
 http = {
     bind_address =
     port_min =
     port_max =
 }
 
-
-# Variables for setting up virual environment
-virtual_environment = {
-    vm_id =
-    disk_storage_pool =
-    disk_size =
-    cloud_init_storage_pool =
-}
+ssh_private_key_file =
+ssh_username =

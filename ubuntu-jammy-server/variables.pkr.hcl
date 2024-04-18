@@ -1,4 +1,4 @@
-# Variables for Proxmox host
+# Connect to Proxmox
 variable "proxmox_api_url" {
     type = string
 }
@@ -10,17 +10,24 @@ variable "proxmox_api_token_secret" {
     type = string
     sensitive = true
 }
-variable "proxmox_node" {
-    type = string
-}
 
-# Variables for downloading ISO and checksum
+# Upload ISO
 variable "iso" {
-    description = "ISO URL and checksum"
+    description = "Download Ubuntu ISO and verify checksum"
     type = object({
         url = string
         checksum = string
     })
+}
+
+# VM configuration
+variable "vm" {
+  description = "Configuration options for VM"
+  type = object({
+    node = string
+    id   = number
+    disk_size = string
+  })
 }
 
 # SSH credentials for Packer
@@ -32,17 +39,8 @@ variable "ssh_username" {
     type = string
 }
 
-# Variables for setting up virual environment
-variable "virtual_environment" {
-    type = object({
-        vm_id = number
-        disk_storage_pool = string
-        disk_size = string
-    })
-}
-
 variable "http" {
-    description = "HTTP server IP and port(s)"
+    description = "HTTP server IP and port(s) for autoinstall"
     type = object({
         bind_address = string
         port_min = number

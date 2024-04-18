@@ -13,8 +13,8 @@ source "proxmox-iso" "ubuntu-jammy-srv" {
     insecure_skip_tls_verify = true
     
     # VM General Settings
-    node = "${var.proxmox_node}"
-    vm_id = "${var.virtual_environment.vm_id}"
+    node = "${var.vm.node}"
+    vm_id = "${var.vm.id}"
     vm_name = "ubuntu-jammy-srv"
     template_description = "Ubuntu Jammy Server Image"
 
@@ -32,8 +32,8 @@ source "proxmox-iso" "ubuntu-jammy-srv" {
 
     disks {
         type = "virtio"
-        storage_pool = "${var.virtual_environment.disk_storage_pool}"
-        disk_size = "${var.virtual_environment.disk_size}"
+        storage_pool = "local-zfs"
+        disk_size = "${var.vm.disk_size}"
         io_thread = true
         discard = true
     }
