@@ -25,7 +25,7 @@ autoinstall:
     users:
       - name: debian
         groups: [adm, sudo]
-        lock-passwd: false
+        lock_passwd: false
         sudo: ALL=(ALL) NOPASSWD:ALL
         shell: /bin/bash
         ssh_authorized_keys:
