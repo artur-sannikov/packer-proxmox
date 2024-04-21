@@ -1,7 +1,7 @@
 # Resource definition for the VM Template
 source "proxmox-iso" "debian-bookworm-server" {
 
-  # Proxmox Connection Settings
+  # Proxmox connection settings
   proxmox_url = "${var.proxmox_api_url}"
   username    = "${var.proxmox_api_token_id}"
   token       = "${var.proxmox_api_token_secret}"
@@ -18,6 +18,7 @@ source "proxmox-iso" "debian-bookworm-server" {
   iso_url          = "${var.iso.url}"
   iso_checksum     = "${var.iso.checksum}"
   iso_storage_pool = "local"
+  unmount_iso      = true
 
   # Enable VM QEMU agent option
   qemu_agent = true
@@ -25,12 +26,12 @@ source "proxmox-iso" "debian-bookworm-server" {
   # VM hard disk
   scsi_controller = "virtio-scsi-single"
   disks {
-    disk_size    = "${var.vm.disk_size}"
-    discard      = true
-    format       = "raw"
+    type          = "virtio"
     storage_pool = "local-zfs"
-    type         = "virtio"
+    disk_size    = "${var.vm.disk_size}"
+    format       = "raw"
     io_thread    = true
+    discard      = true
   }
 
   # VM CPU
@@ -38,7 +39,7 @@ source "proxmox-iso" "debian-bookworm-server" {
   cpu_type = "host"
 
   # VM memory
-  memory = "2048"
+  memory = 2048
 
   # VM network
   network_adapters {
@@ -47,7 +48,7 @@ source "proxmox-iso" "debian-bookworm-server" {
     firewall = "false"
   }
 
-  # VM Cloud-Init
+  # VM cloud-init
   cloud_init              = true
   cloud_init_storage_pool = "local-zfs"
 
@@ -61,9 +62,7 @@ source "proxmox-iso" "debian-bookworm-server" {
   http_bind_address = "${var.http.bind_address}"
   http_port_min     = "${var.http.port_min}"
   http_port_max     = "${var.http.port_max}"
-
-
-
+  
   # SSH settings for Packer
   ssh_username = "root"
   ssh_password = "${var.ssh_password}"
