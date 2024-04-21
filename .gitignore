@@ -1,3 +1,4 @@
 credentials.pkrvars.hcl
 **/user-data
 **/*.pkrvars.hcl
+**/*.bu
