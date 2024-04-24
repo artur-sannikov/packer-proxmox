@@ -1,0 +1,58 @@
+variant: fcos
+version: 1.5.0
+passwd:
+  users:
+    - name: core
+      should_exist: false
+    - name: admin
+      uid: 1000
+      ssh_authorized_keys:
+        - ssh-ed25519 AAAA...
+      groups:
+        - wheel
+        - sudo
+storage:
+  files:
+    # Workaround to intall QEMU guest agent
+    - path: /usr/local/bin/install-qemu-guest-agent
+      mode: 0755
+      contents:
+        inline: |
+          #!/usr/bin/env bash
+          set -euo pipefail
+          rpm-ostree install qemu-guest-agent
+    # Set Zincati update strategy (UTC timezone)
+    - path: /etc/zincati/config.d/55-updates-strategy.toml
+      contents:
+        inline: |
+          [updates]
+          strategy = "periodic"
+          [[updates.periodic.window]]
+          days = [ "Mon", "Wed", "Sat" ]
+          start_time = "07:00"
+          length_minutes = 60
+systemd:
+  units:
+    # Enable service to install QEMU guest agent
+    - name: install-qemu-guest-agent.service
+      enabled: true
+      contents: |
+        [Unit]
+        After=network-online.target
+        Wants=network-online.target
+        Before=systemd-user-sessions.service
+        OnFailure=emergency.target
+        OnFailureJobMode=replace-irreversibly
+        ConditionPathExists=!/var/lib/qemu-guest-agent-installed
+
+        [Service]
+        RemainAfterExit=yes
+        Type=oneshot
+        ExecStart=/usr/local/bin/install-qemu-guest-agent
+        ExecStartPost=/usr/bin/touch /var/lib/qemu-guest-agent-installed
+        ExecStartPost=/usr/bin/systemctl --no-block reboot
+        StandardOutput=kmsg+console
+        StandardError=kmsg+console
+
+        [Install]
+        WantedBy=multi-user.target
