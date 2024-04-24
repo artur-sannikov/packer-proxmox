@@ -2,21 +2,21 @@
 source "proxmox-iso" "debian-bookworm-server" {
 
   # Proxmox connection settings
-  proxmox_url = "${var.proxmox_api_url}"
-  username    = "${var.proxmox_api_token_id}"
-  token       = "${var.proxmox_api_token_secret}"
+  proxmox_url = var.proxmox_api_url
+  username    = var.proxmox_api_token_id
+  token       = var.proxmox_api_token_secret
   # Skip TLS verification
   insecure_skip_tls_verify = true
 
   # VM general settings
-  node                 = "${var.vm.node}"
-  vm_id                = "${var.vm.id}"
+  node                 = var.vm.node
+  vm_id                = var.vm.id
   vm_name              = "debian-bookworm-srv"
   template_description = "Debian Bookworm Server Image"
 
   # VM ISO
-  iso_url          = "${var.iso.url}"
-  iso_checksum     = "${var.iso.checksum}"
+  iso_url          = var.iso.url
+  iso_checksum     = var.iso.checksum
   iso_storage_pool = "local"
   unmount_iso      = true
 
@@ -28,7 +28,7 @@ source "proxmox-iso" "debian-bookworm-server" {
   disks {
     type          = "virtio"
     storage_pool = "local-zfs"
-    disk_size    = "${var.vm.disk_size}"
+    disk_size    = var.vm.disk_size
     format       = "raw"
     io_thread    = true
     discard      = true
@@ -59,13 +59,13 @@ source "proxmox-iso" "debian-bookworm-server" {
 
   # Packer autoinstall settings
   http_directory    = "http"
-  http_bind_address = "${var.http.bind_address}"
-  http_port_min     = "${var.http.port_min}"
-  http_port_max     = "${var.http.port_max}"
+  http_bind_address = var.http.bind_address
+  http_port_min     = var.http.port_min
+  http_port_max     = var.http.port_max
   
   # SSH settings for Packer
   ssh_username = "root"
-  ssh_password = "${var.ssh_password}"
+  ssh_password = var.ssh_password
 
   # Raise the timeout, when installation takes longer
   ssh_timeout = "30m"
