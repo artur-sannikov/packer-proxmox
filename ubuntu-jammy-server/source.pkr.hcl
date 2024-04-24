@@ -2,21 +2,21 @@
 source "proxmox-iso" "ubuntu-jammy-srv" {
 
   # Proxmox connection settings
-  proxmox_url = "${var.proxmox_api_url}"
-  username    = "${var.proxmox_api_token_id}"
-  token       = "${var.proxmox_api_token_secret}"
+  proxmox_url = var.proxmox_api_url
+  username    = var.proxmox_api_token_id
+  token       = var.proxmox_api_token_secret
   # Skip TLS verification
   insecure_skip_tls_verify = true
 
   # VM general settings
-  node                 = "${var.vm.node}"
-  vm_id                = "${var.vm.id}"
+  node                 = var.vm.node
+  vm_id                = var.vm.id
   vm_name              = "ubuntu-jammy-srv"
   template_description = "Ubuntu Jammy Server Image"
 
   # VM ISO
-  iso_url          = "${var.iso.url}"
-  iso_checksum     = "${var.iso.checksum}"
+  iso_url          = var.iso.url
+  iso_checksum     = var.iso.checksum
   iso_storage_pool = "local"
   unmount_iso      = true
 
@@ -28,7 +28,7 @@ source "proxmox-iso" "ubuntu-jammy-srv" {
   disks {
     type         = "virtio"
     storage_pool = "local-zfs"
-    disk_size    = "${var.vm.disk_size}"
+    disk_size    = var.vm.disk_size
     format       = "raw"
     io_thread    = true
     discard      = true
@@ -67,13 +67,13 @@ source "proxmox-iso" "ubuntu-jammy-srv" {
 
   # Packer autoinstall settings
   http_directory    = "http"
-  http_bind_address = "${var.http.bind_address}"
-  http_port_min     = "${var.http.port_min}"
-  http_port_max     = "${var.http.port_max}"
+  http_bind_address = var.http.bind_address
+  http_port_min     = var.http.port_min
+  http_port_max     = var.http.port_max
 
   # SSH settings for Packer
   ssh_username         = var.ssh_username
-  ssh_private_key_file = "${var.ssh_private_key_file}"
+  ssh_private_key_file = var.ssh_private_key_file
 
   # Raise the timeout, when installation takes longer
   ssh_timeout = "30m"
