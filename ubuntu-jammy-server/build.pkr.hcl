@@ -20,7 +20,7 @@ build {
     ]
   }
 
-  # Copy datasource definition for cloud-init to prioritize no-network provisioning
+  # Copy datasource definition for cloud-init to prioritize provisioning without network
   provisioner "file" {
     source      = "files/99-pve.cfg"
     destination = "/tmp/99-pve.cfg"
