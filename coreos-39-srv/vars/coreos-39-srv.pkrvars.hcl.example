@@ -7,8 +7,8 @@ vm = {
 
 # Download ISO and verify checksum
 iso = {
-  url      = "https://builds.coreos.fedoraproject.org/prod/streams/stable/builds/39.20240407.3.0/x86_64/fedora-coreos-39.20240407.3.0-live.x86_64.iso"
-  checksum = "c49ac47800dbd0c5d53e5156565f093d5b7ec791094987bc4ca5bae2d7b061b4"
+  url      = "https://builds.coreos.fedoraproject.org/prod/streams/stable/builds/40.20240416.3.1/x86_64/fedora-coreos-40.20240416.3.1-live.x86_64.iso"
+  checksum = "4cd031f924044e83d02244c23f8cdd0b6c634c2f9e686a2ef1c7e3a8cd6ff260"
 }
 
 # HTTP server IP and ports for autoinstall

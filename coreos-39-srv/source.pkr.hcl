@@ -11,7 +11,7 @@ source "proxmox-iso" "coreos" {
   # VM general settings
   node                 = var.vm.node
   vm_id                = var.vm.id
-  vm_name              = "coreos-39-srv"
+  vm_name              = "coreos-40-srv"
   template_description = "Fedora CoreOS Image"
 
   # VM ISO
