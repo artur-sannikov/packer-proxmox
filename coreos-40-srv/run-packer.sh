@@ -2,7 +2,7 @@
 # Run packer validate or build
 # Usage: ./run-packer.sh [command]
 credentials="../credentials.pkrvars.hcl"
-vars="vars/coreos-39-srv.pkrvars.hcl"
+vars="vars/coreos-40-srv.pkrvars.hcl"
 
 if [ "$1" == "validate" ]; then
   packer validate -var-file="${credentials}" -var-file="${vars}" .
