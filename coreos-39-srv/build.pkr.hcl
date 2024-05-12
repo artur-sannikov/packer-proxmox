@@ -1,6 +1,6 @@
 build {
 
-  name    = "coreos-39"
+  name    = "coreos-40"
   sources = ["source.proxmox-iso.coreos"]
 
   provisioner "shell" {
