@@ -1,5 +1,5 @@
 # Resource definition for the VM Template
-source "proxmox-iso" "debian-bookworm-server" {
+source "proxmox-iso" "debian-bookworm-srv" {
 
   # Proxmox connection settings
   proxmox_url = var.proxmox_api_url

@@ -1,7 +1,7 @@
 # Build definition to create the VM template
 build {
-  name    = "debian-bookworm-server"
-  sources = ["source.proxmox-iso.debian-bookworm-server"]
+  name    = "debian-bookworm-srv"
+  sources = ["source.proxmox-iso.debian-bookworm-srv"]
 
   # Copy default cloud-init config
   provisioner "file" {

@@ -1,7 +1,7 @@
 # Build definition to create the VM template
 build {
 
-  name    = "ubuntu-server-jammy"
+  name    = "ubuntu-jammy-srv"
   sources = ["source.proxmox-iso.ubuntu-jammy-srv"]
 
   # Provision the VM template for cloud-init
