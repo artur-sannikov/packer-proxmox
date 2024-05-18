@@ -4,6 +4,8 @@ autoinstall:
   locale: en_US
   keyboard:
     layout: us
+  apt:
+    preserve_sources_list: true
   ssh:
     install-server: true
     allow-pw: no
