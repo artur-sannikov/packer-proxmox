@@ -75,3 +75,4 @@ I use an SSH password to set up a Debian template and SSH key pairs for Ubuntu a
 5. [All preseed options](https://preseed.debian.net/debian-preseed/), Steve McIntyre
 6. [Automating the installation using preseeding](https://www.debian.org/releases/stable/amd64/apb.en.html)
 7. [Ignition configuration docs for Fedora CoreOS](https://coreos.github.io/ignition/)
+8. [Ubuntu autoinstallation docs and tutorials](https://canonical-subiquity.readthedocs-hosted.com/en/latest/intro-to-autoinstall.html)
