@@ -1,0 +1,39 @@
+#version=DEVEL
+# Use text install
+text
+
+# Keyboard layouts
+keyboard --vckeymap=us --xlayouts='us'
+# System language
+lang en_US.UTF-8
+
+# Add repos
+repo --name=fedora
+repo --name=updates
+
+# Install packages
+%packages
+@^server-product-environment
+qemu-guest-agent
+cloud-init
+%end
+
+# Run the Setup Agent on first boot
+firstboot --enable
+
+# Generated using Blivet version 3.9.1
+ignoredisk --only-use=vda
+autopart
+# Partition clearing information
+clearpart --none --initlabel
+
+timezone Europe/Helsinki --utc
+
+# Root password (packer)
+rootpw --iscrypted <encrypted_password>
+
+# SSH key
+sshkey --username=root <ssh-key>
+
+# Reboot after installation
+reboot

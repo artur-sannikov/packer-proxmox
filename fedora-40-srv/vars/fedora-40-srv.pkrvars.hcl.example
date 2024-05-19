@@ -1,0 +1,22 @@
+# Settings for VM
+vm = {
+    node =
+    id =
+    disk_size =
+}
+
+# Download ISO and verify checksum
+iso = {
+    url = "https://mirror.accum.se/mirror/fedora/linux/releases/40/Server/x86_64/iso/Fedora-Server-dvd-x86_64-40-1.14.iso"
+    checksum = "32d9ab1798fc8106a0b06e873bdcd83a3efea8412c9401dfe4097347ed0cfc65"
+}
+
+# HTTP server IP and ports for autoinstall
+http = {
+    bind_address =
+    port_min =
+    port_max =
+}
+
+ssh_private_key_file =
+ssh_username =

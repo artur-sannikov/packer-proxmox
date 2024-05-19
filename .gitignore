@@ -3,3 +3,4 @@ credentials.pkrvars.hcl
 **/*.pkrvars.hcl
 **/*.bu
 **/*.ign
+**/ks.cfg
