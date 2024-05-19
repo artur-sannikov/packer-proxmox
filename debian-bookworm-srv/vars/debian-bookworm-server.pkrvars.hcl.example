@@ -2,7 +2,7 @@
 vm = {
   node =
   id =
-  disk_size =
+  disk_size = "16G"
 }
 
 # Download ISO and verify checksum
